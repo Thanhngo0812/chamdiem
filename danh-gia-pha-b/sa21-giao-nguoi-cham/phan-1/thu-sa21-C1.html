@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Phiếu chấm bài giảng - bộ chấm thử - C1</title><style>
+:root { color-scheme: light dark; }
+body { font-family: system-ui, "Segoe UI", Arial, sans-serif; line-height: 1.5; max-width: 56rem; margin: 0 auto; padding: 1rem 1.25rem 4rem; }
+h1 { font-size: 1.3rem; }
+h2 { font-size: 1.15rem; margin: .4rem 0; }
+h3 { font-size: 1rem; margin: 0 0 .4rem; }
+.note { color: #555; font-size: .9rem; }
+.card { border: 1px solid #bbb; border-radius: 8px; padding: .8rem 1rem; margin: 1.4rem 0; }
+.head { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .88rem; color: #444; border-bottom: 1px solid #ddd; padding-bottom: .4rem; margin-bottom: .6rem; }
+.head b { color: #000; }
+.dinh-nghia { background: #eef3fb; border-radius: 6px; padding: .5rem .8rem; margin: .5rem 0 1rem; }
+.ban { border: 1px solid #ccc; border-radius: 6px; padding: .6rem .9rem; margin: .8rem 0; }
+.ban h3 { background: #333; color: #fff; display: inline-block; padding: .1rem .6rem; border-radius: 4px; }
+.khoi { margin: .6rem 0; }
+.khoi > b { display: block; font-size: .9rem; color: #444; text-transform: uppercase; letter-spacing: .02em; }
+.item { margin: .3rem 0; white-space: pre-wrap; }
+.c { white-space: pre-wrap; }
+details { background: #f6f6f6; border-radius: 6px; padding: .3rem .7rem; margin: .25rem 0; }
+summary { cursor: pointer; font-weight: 600; font-size: .9rem; }
+blockquote { margin: .4rem 0; padding-left: .8rem; border-left: 3px solid #999; white-space: pre-wrap; }
+.ngoai-sach { border: 2px dashed #b36b00; border-radius: 6px; padding: .4rem .7rem; margin: .4rem 0; background: #fff6e6; }
+.ngoai-sach > b { color: #8a4f00; }
+.tq { margin: .4rem 0; }
+img.cong-thuc { max-width: 100%; height: auto; display: block; margin: .3rem 0; background: #fff; }
+.y-text { font-weight: 600; white-space: pre-wrap; margin: .4rem 0 .6rem; }
+@media (prefers-color-scheme: dark) { body { background: #1c1c1c; color: #e8e8e8; } .head, .note, .khoi > b { color: #bbb; } .head b { color: #fff; }
+  details { background: #2a2a2a; } .card, .ban { border-color: #555; } .dinh-nghia { background: #1f2a3a; }
+  .ngoai-sach { background: #3a2a10; } .ngoai-sach > b { color: #f0b060; } }
+</style></head><body><h1>Phiếu chấm bài giảng - bộ chấm thử - C1</h1><p class="note">Đọc cả nhóm bản của một khái niệm rồi mới chấm. Bấm vào dòng &quot;Nguồn&quot; để xem câu trích và trang. Tệp này đọc được khi không có mạng.</p><section class="card" id="T02"><div class="head"><span>Mục <b>T02</b></span><span>Cuốn: <b>doc-1</b></span><span>Module: <span class="c">Hai ma trận bằng nhau</span></span></div><h2 class="c">Ma trận tam giác</h2><div class="dinh-nghia"><p>Câu định nghĩa nguyên văn (trang 17):</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.
+[formula]
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+[formula]
+.
+.
+. · · ·
+[formula]
+[formula]
+Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.
+[formula]
+a11 0 · · · 0
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+a11
+[formula]
+· · · · · ·
+.
+.
+.
+[formula]
+[formula]
+Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.
+e) Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j:
+[formula]
+a11 0 · · · 0 0 a22 · · · 0 · · · · · ·</blockquote><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABrklEQVR4nO2WMYoCMRSGs29GGAR1lQgyYKeVoAfwClbaeAzBRryBIEyvvY124g0ES49hIQgijgnDJAuLaHYnjm+KLZbJV+b9X0j+IoTICGEYjkajzwjFYtHzPJvoYIz5vt9qtXK53GMRACqVil4ghOTzec/z2u32r3UgCQEjIABMSMUIGACVUjACBkClFIyAAVApBSOkuyX5TQKBcy6ECIIAKziOY1lWJpPBCjFA3NAIaW7J1uwB0Ov1ms1mrVbTGFL3Mx4MBpTS7XYbncKf3wGMkOqWZNLH+HA4cM5PpxNWcF3XcZxSqYQVYoC4oRHumJYeHI9HQsj5fCYR9C2Vy2VCSKFQwAoxQNzQCHdMSxgAlVIwAgZApRSMgAFQKQUjYIA0CvarwfV6nUwmlNLn3gDdbvelwBhbr9c/DgNQr9c/tD9g3/c559H1bDarF/5XrWAEBIAJqRghNS0tl0shRAKjWq1Op1POucRB9vt9p9MZDoeXywUlSCkZY7PZbDweY5znQxaGoWVZb69gbzab3W4nhKCU9vt913XfGIvF4na7BUEwn88bjcZqtYo/0hfsp02GYlf3IgAAAABJRU5ErkJggg=="><img class="cong-thuc" alt="công thức" src="data:image/png;base64,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"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,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"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAAB2ElEQVR4nO2Yu4rCQBSGZw9eETHjpVEQX8BGH8Mqj2BhZWkpiI2PodgHLcXKziKFCDbaiI1gQIUIEScBnQXXhahJ9li6zlfm/B8T/kA4DGk2m5RS6R5KaavV4k74MplMoVDgnJNfDofDbDYzTZM4wp8YDoeSJDUaDccTgLwICAEBYEJ2hIABUCkbQsAAqJQNIWAAVMqGED67JX4FK1iWxTl32wTg+VEgEACAUCj0wit5AF5DIXxyS+R50Vyv1+12W1VVxzWUiL31Pb80/FuBv/Qz3u12lmVtNhuskEwmg8FgOp1+4ZU8AK+hEG6Iln7QdZ0Qst1uCbIlSZIIIalUCit4A3/MhSBawgLo5A0hYABUyoYQMAAqZUMIGOATBV+v1xsMBvYtVdM0xpirMJlMut3u5XK5OxdcT/46XXkehMNhx3uEL7eV+Y1qBSEgAEzIjhDetCWfx2y5XCqKMh6PT6eT3+/P5/PlctnhModzrut6vV7PZrO1Wm0+n5/PZ9M0VVWtVqsOgqZpsizncrnRaPQwYow9CsfjsVKpxGIxRVFQ90v9fj8ajcqybBiGo3DXkmEYnU6HMVYqlSKRyN+1rlar6XSaSCSKxSLqOywWi/1+TymNx+NuwjfPS69Z1W2QLQAAAABJRU5ErkJggg=="><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABUUlEQVR4nO2WQYrCQBBFa74GgqCOkoC41m08QG4RL+LSK7jKYbyCd8kiILgwpBGTgUGcnkkbfhazmEm9ZdV/TfovQkvd4H6/7/f79waz2SxN06G4KMuyKIrNZjMej59DAIvFwi2IyGQySdM0juMfc0hHoAIBmJCNCgygUhYqMIBKWajAACploUK/W6o/6SAYY6qqut1urOD7/mAw8DyPFVpA21KFPrc0dJwBbLfbKIpWq5XDqF0v491uFwTB6XRqbvHrd4AKvW6p7vozzrLMGHM+n1lhuVz6vj+fz1mhBbQtVXigLT3J81xELpeLNHC3FIahiEynU1ZoAW1LFR5oSwygUhYqMIBKWajAACploQID+igMXy2u1+vhcAiC4OtsIEmSl0JZlsfj8dvHAOv1+s35Ai6KwhjTnI9GI7fwt2qFCgRgQjYqMIBKWajA8B9a+gB7iYuPgTeT4AAAAABJRU5ErkJggg=="><img class="cong-thuc" alt="công thức" src="data:image/png;base64,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"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAXCAIAAAAKpbGIAAACpElEQVR4nO2WwUsiURjAPx+rzDQo2kVRMBQPWuMQCgnRRQgRpEs3r3boP+gQdWxueegg0d/QqZN0yEOBDVZmYyoF2skh8o3DkFY0My4yu7a07eyCBMuy3+37fo/5zXzve48xDQYD+ORAny2A/46/bT++vMtbrdbBwUG/30+lUjRNK4pisVjGlQy+x8vLSzabTSaTHMd1u12WZVdWVqanp5vN5mC8+OZQFIVlWYZharWaXqlWq16vd2FhAWM8pgPpX1MoFHZ2djKZTCgU0isEQVgsFoZh7Hb7mK1CANDr9XK5HEEQiURiBGq1GsY4FoshNO5cIAC4vb3lOC4cDk9NTelVTdPOz89JkgyHw2MKQHc0Gg1RFCORCEEQevX5+fns7Mzn842sP4emaR9UP6LD2ZVl2WQyBYPBUVsEQbi5uUkkEna7/fr6GgA8Hs/e3l6lUpmdnQ0GgxcXF09PT61Wa2trKxAISJJkQIcPdTgcFEVZrdaRuVQqPTw8zM3NAcDx8bGmaaenpzRNx+PxbDZ7f3+/ubm5sbEhSVI+nwcAYzp0RKNRt9stCIIuuLq62t/fJ0nS7XZ3Oh2Msd/vt9lskUjk8vIyFoul02mEkCzLoijabDYAMKbDXvn9fpZld3d3zWazJEmKomxvb6+vrx8eHp6cnCwuLlIUNT8/L4oiz/PLy8sURQFAvV7v9/sMwwCAMX07571er1KpCIKgp6qqNpvNHw9guVwOhUJHR0c6XVtbW1pa6na7HMe9vr4a0LfZn5iYYBjG5XLpKULI5/NNTk6OFvA8T5JkIBAAAIxxsVhMpVJ3d3flchkhZEDf34kGs8jzPE3TTqcTACiKmpmZqVar7XZ7dXVVf4Nf0j+/dmRZfnx8HKWqqmKMVVX9LTX9I/8MXwF43IKElMQLvAAAAABJRU5ErkJggg=="><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABl0lEQVR4nO2ZvarCMBTH6yGxRRA/HsAuFgQnQXDwadydXPo84uIjOPkOgrvYxU5+VWojwV64g8TatKfb9fb8ttP+f204CSGQSqfTuV6vxjuj0Wi1WhlpsMFgEATBq5ZSbjab2+1m6Ijf8X1/OByOx+NYAxgFARIQACakQgIGQKUUSMAAqJQCCRgAlVIgocRdin/RCSxRP59PKSWA9s+QrAE459VqtcCQsoGc9ySUtkssUTcaDdd1M1arQefW75xp+J9CXGgzjqLofD5zzrGCZVmtVss0zQJDygZy3pNQ2i6xRC2ECMPw8XhgBdM0a7UardY/P9NAAgLAhFRIwAColAIJGACVUiChLF1i0+k0DMNXLYTwPM9xHK3RbDY/H2bcDlROp9PnOZgxVq/XU39QyTg1f0tbgQQEgAmpkFCaLgkhigmz2UzdyPLp9Xrz+Vy3baVcc3a73eVymXVzmhiSbdvb7Xa/3yMF1m63L5fLbrfr9/upicPhsF6vfd+XUk4mE8Y5j6LoeDzqPnm/3z3PWywWQRA4jvMDvaEX6TOhHyMAAAAASUVORK5CYII="><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABoElEQVR4nO2YQY4BQRSGq166OtHS0iLsXYDEBdzCBaytXcIJXEKs3MABbC0t6BURjR6taoLEVFoPv42M8b5V56//s3hVqXSTxhhxQxiGrVZrMpmk8lKp5Ny2hRDGmM1mI6Ws1+tEdM2DIMgWLtRqtcFgEASBHf7YIMQCACElGxYQCGpZsIBAUMuCBQSCWhYsiE+fkjmDClrrJEkOh4PWGhKISCnluq793vB+U/oN+nWFhVdOyclMC4VCt9tVSnmel33uU8zn80aj0Ww2l8tlaol3GoGglgULyGXs3EZCiO12u1qtvs4IRPA8r1gs+r7vum5qifcBgaDWpwtOZrrb7aIoMsagpzWXy+XzeT6tf3iniQUAQko2LCAQ1LJgAYGglgULnzIl587adDrtdDpKqWvi+/69r6zbnyiXyzLz9VdrHUVRkiSpXEqZLbzXWIkFAEJKNiz8w2tGCDGbzUajURiGcRy32+1qtUrH4/GOcPnmGA6H/X5/sVicovV6bR7R6/Uqlcp4PD79+3O6zB6hlJJSXp5fMNb9fv+cEMfxU8I3gO7odlaJs2MAAAAASUVORK5CYII="><img class="cong-thuc" alt="công thức" src="data:image/png;base64,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"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,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"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABzklEQVR4nO2Zv4rCQBCH1zH4B5sEtNFSsLPxCawEQVDfwd7OUmxEK99A8AUEK7EQsRNRQfQBbAQDCmplEsQ59DxYLzFOyrvsV2Z+H7uZwDJsWK1WUxRFfkVRlHq9jlZIsVgslUohIvvhfD6vVitd15klaGIwGMiyXK1WLVcA5hAQAgGghHiEQAFIKQ4hUABSikMIFICU4hCCu7uED6iCYRiI+G4SAPMjn88HAIFAwMGWbAC7ohDc3CVmHjS322273Z5Op5ZjKBNz69/80vBvBXR0GB8OB8MwdrsdVQiHw36/PxqNOtiSDWBXFMIT0aVvTqcTY2y/3zNil2RZZoxFIhGqYA98qAtBdIkKkJNPhEABSCkOIVAAUopDCBTAjYLU7Xb7/T4/paqqqmnaW2GxWHQ6ndvt9rIuvF3Zc3lgLgSDQct7BM+7kfkPtRWEQAAoIR4huKxLk8mkUCis1+vPBiIOh8NkMtloNC6Xi+UVEfLXRb1eL5PJjMfjj9GnUKlUVFUlphHRc71evV4v/aWlVquVy+USicT9v60k/Srruj4ajebzeSgUyufz8Xj8flaXy+V0Ol0sFjVN41efzWbZbLbZbB6Px81mUyqVlsvlF5AUqetCqdlYAAAAAElFTkSuQmCC"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABi0lEQVR4nO2ZMYrCQBSGZx4aQRBJYQoLS8EL2IiNF/AIwWvYegHtvYSFVUCsrHIGwUKUWFiojaO+bZbdWTOR32bZJe/r8v7/C8krBkI0M6sUURQNBoPL5fI073a7hXRbKWWMOZ1OQRA0Gg173mw23YJSSmsdhuFwOCQie/7jAoFEACCkZCMCAkEtCxEQCGpZiIBAUMtCBJX3LTHz4/FAhev1yszGGFTwPI+ISqXSG4+UBWUmIuR8S4pdbDab6XQax3E6Uk5hPp9Xq9XRaHS/35+iP/jSJEKuD+MkSYwx+/0eFYIg8DyvXq+/8UhZUGYiwjeypS+Ox6PW+nA4qBTuLfm+z8y1Wg0VXkCvQhE+kS0hENSyEAGBoJaFCAgEtSxEQKA8CoWsgJlns9l6vbaHrVYr8yurUqmk79Lr9bTzh8Xtdjufz+moWCy6hf+1VhIBgJCSjQgIBLUsRED4hcM4juPFYrHb7crlcr/fb7fbL9rb7VZ1Op3VasXMSZKMx+PJZGKMcZ7QzLxcLj8AEin3xNEpE1gAAAAASUVORK5CYII="><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAAXCAIAAAD87DQQAAAEBUlEQVR4nOWYS0gyaxjHx7G0VNQ0KVAXYgwU4iKzIoIWgbpw4aKkNtGmTUSLIlCCQGhhrQykIKQLlJs0sqgILFEyiIwsLVDCIikpzAtoal7eDxmOX+c7cE6gHRf+NjLPXPw97zvzn1cxAACowoChygOGKg8YqjxgqPKo+rqRzWbPzs5sNhuNRpPL5VQqFQBQVfW3Y8pFCd0whdwOBAIKhYJMJk9PT4dCobW1NYfDwWKxVldXsVgsVFZK6wajH29vbyMjIwAAtVrd2NjY0tLS1NRkt9s5HA4Gg4HKSsndqtDbRqPRuFyunZ0dIpGI7iAQCEQiUSAQwHA5n/mfcKuCIOj29lav17e3t7e0tKDVXC53fn5Oo9EKFQiCotGoyWRyuVxEIlEkEnV2dn79ylAoZDQaZTIZg8GASkeRbtls1mazWSyWZDIpEAikUml+4AAAGo0Gj8drtVrwF+/v793d3RKJJBaLoZXX11elUmk2mxOJxMHBAYIgKpUqnU4DAA4PD6empvr6+jgcjsfjASWlGLdMJrO4uLi0tBQKhe7v76VSqVgsDgQCcDabvby8JBKJfD6/MGx+v//h4UEoFNbW1qKV/f39SCTS2tpaU1MjFouHhoaWl5edTicEQRKJZH5+fnBwsLq6uoQzjM5SMW5er/fo6Kirq6uuro7L5SqVyuvr683NzXzP0WiUTqez2ezCdd1udyKREAqFEAQdHx9HIpFwOGwymbxebz73YBhBkI+PD7/fX9om/9lzMW7xeNzhcBweHqInMplMCoXi9XphLBZLp9NJJBIej0f3fX5+npycUKnU5ubmcDh8cXGBw+HGxsacTmdHR0dhsAkEwleVn6BIt7a2tqurq8nJSbQeDAZjsRiCIPmeRSJRIpEIh8NoQhgMhpubm/r6ejKZ7HK5WCwWgUDA4XCFcHp5edna2pLL5V9vuR/quUg3BoOBrlsymYxer2ez2f39/fk1STKZVKvVfr9fJBJ5PB4ej8dkMhUKhUwmC4VCo6OjDQ0NBY94PD4xMYHBYObm5igUSqG+vb2tVCr39vYQBClh2yVxgyBoY2NDp9NptVoej5fP7UL6OZ3OQhgmk0mPx5NKpb6maDKZVKlUs7OziUTij4A1Go0IgpQ8t0vidnBwMDw8/Pj4iG7+7vk/SaVSGo1Gp9NlMhkAgNlsPj09/X96LsbNYrEoFIpgMAgAeHp6Wl9f/+4aPZPJLCws+Hy+np4eg8GQTqetVuv4+HjhgDL+3/IvblarVavVSqVSs9mcy+XcbjeXy/3uPK+srBTehyh8Pv/5+RkAYLfbp6ament76XT6wMDAzMyMz+f7yUn9rtvd3d0f4UIikXZ3d3//rqocYKjygMstUAZ+AYkkN2HdLpHJAAAAAElFTkSuQmCC"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,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"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABmElEQVR4nO2ZsarCMBSG4zG1RZHq1slJH0ARHPpK7j6IryAOLq4+hoI4OLqoU4tKSCW1F+4gMbb1dLvenm87zf/RcBJCSiudTudyubBXRqPRarViafB+v3+9Xp+1Umqz2dxuN5ZF8srpdBoOh77vJxkAKwiQgAAwIR0SMAAqpUECBkClNEjAAKiUBgkl7lLyS5bAjfrxeCilADLfDGYNYFlWrVYrMKV84MM4CaXtEjdq13Unk0nObmV0b/3OlYb/KSSFDmMpZRiGlmVhBcdx2u22bdsFppQPfBgnobRd4kYdRZEQ4n6/YwXbtuv1Ou3WP7/SQAICwIR0SMAAqJQGCRgAldIgoSxd4uPxWAjxrKMoOhwOvV4v02i1Wu8Pc/4OVIIgeL8Hc86bzWbqCyo5t+ZvaSuQgAAwIR0SMAAqVSIhCIL5fB7HMVYIw3C9XhvnUJ6w3+/P57Px0PwGeiKEmM1m779gU4Q4jrfb7XQ6XSwWg8FguVxWq1XHcXzfd103RZBS7na7brfreZ6U8ng8AkCj0VBKMcZ+AH1M7/Sub0j2AAAAAElFTkSuQmCC"><img class="cong-thuc" alt="công thức" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACeCAIAAAC0Kx2eAAABfklEQVR4nO2XTYrCMBiGk4+mYKVSERddeAWFXsBbuPAO7gQ33skbiGcQXHmA4kqhP8JYkwEHnNBG593MMOL3LN+8TxdfQkilMUY0OBwOk8lku93W8l6v5zXbQghjTJ7nUsrRaERE9zyKIrfwxXA4XK1WURTZ4bcNQiwAEFKyYQGBoJYFCwgEtSxYQCCoZcGCePcpmRuooLWuqupyuWitIYGIlFK+79vvhteb0iPo4QoLfzklz5l2Op3FYqGUCoLAfe5rpGmaJMl4PD4ej7Ul3mkEgloWLCCXsdeMhBBlWZ5Op48bAhGCIOh2u2EY+r5fW+J9QCCo9e6C50zP53NRFMYY9LS2Wq12u82n9R/vNLEAQEjJhgUEgloWLCAQ1LJg4V2m5D1Z2+/3s9lMKXVPwjB89pfV/ES/35fO56/WuiiKqqpquZTSLbzWWIkFAEJKNiwgENSyYAHh96ckl8tllmWDwWA6ncZx/LORpun1et3tdvP5fLPZOO/mO+v1+hPzjc3ie/wnFwAAAABJRU5ErkJggg=="></div><article class="ban" id="T02-A" data-ban="A"><h3>Bản A</h3><!--b--><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Ma trận tam giác trên là ma trận vuông mà các phần tử nằm dưới đường chéo chính đều bằng không.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.</blockquote></details><div class="item"><span class="c">Ma trận tam giác dưới là ma trận vuông mà các phần tử nằm trên đường chéo chính đều bằng không.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.</blockquote></details></div><div class="khoi"><b>Ví dụ</b><div class="item"><span class="c">Ma trận chéo là một trường hợp đặc biệt của ma trận tam giác, trong đó các phần tử nằm ngoài đường chéo chính đều bằng không.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j</blockquote></details></div><!--/b--></article><article class="ban" id="T02-B" data-ban="B"><h3>Bản B</h3><!--b--><div class="khoi"><b>Gợi lại tiên quyết</b><div class="tq"><b class="c">Ma trận tam giác trên</b> <small>Module 10: <span class="c">Ma trận vuông cấp n</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 17)</summary><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.
+[formula]
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+[formula]
+.
+.
+. · · ·
+[formula]
+[formula]
+Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.
+[formula]
+a11 0 · · · 0
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+a11
+[formula]
+· · · · · ·
+.
+.
+.
+[formula]
+[formula]
+Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.
+e) Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j:
+[formula]
+a11 0 · · · 0 0 a22 · · · 0 · · · · · ·</blockquote></details><div class="item"><b>Câu nối:</b> <span class="c">Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.</span></div><details class="nguon"><summary>Nguồn: [Q1]</summary><p><b>[Q1]</b> (trang 17)</p><blockquote class="c">Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.</blockquote></details></div><div class="tq"><b class="c">Ma trận tam giác dưới</b> <small>Module 10: <span class="c">Ma trận vuông cấp n</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 17)</summary><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.
+[formula]
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+[formula]
+.
+.
+. · · ·
+[formula]
+[formula]
+Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.
+[formula]
+a11 0 · · · 0
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+a11
+[formula]
+· · · · · ·
+.
+.
+.
+[formula]
+[formula]
+Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.
+e) Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j:
+[formula]
+a11 0 · · · 0 0 a22 · · · 0 · · · · · ·</blockquote></details></div></div><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Ma trận tam giác trên là ma trận vuông mà các phần tử nằm dưới đường chéo chính đều bằng 0.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.</blockquote></details><div class="item"><span class="c">Ma trận tam giác dưới là ma trận vuông mà các phần tử nằm trên đường chéo chính đều bằng 0.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.</blockquote></details></div><!--/b--></article><article class="ban" id="T02-C" data-ban="C"><h3>Bản C</h3><!--b--><div class="khoi"><b>Gợi lại tiên quyết</b><div class="tq"><b class="c">Ma trận tam giác trên</b> <small>Module 10: <span class="c">Ma trận vuông cấp n</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 17)</summary><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.
+[formula]
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+[formula]
+.
+.
+. · · ·
+[formula]
+[formula]
+Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.
+[formula]
+a11 0 · · · 0
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+a11
+[formula]
+· · · · · ·
+.
+.
+.
+[formula]
+[formula]
+Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.
+e) Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j:
+[formula]
+a11 0 · · · 0 0 a22 · · · 0 · · · · · ·</blockquote></details><div class="item"><b>Câu nối:</b> <span class="c">Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.</span></div><details class="nguon"><summary>Nguồn: [Q1]</summary><p><b>[Q1]</b> (trang 17)</p><blockquote class="c">Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.</blockquote></details></div><div class="tq"><b class="c">Ma trận tam giác dưới</b> <small>Module 10: <span class="c">Ma trận vuông cấp n</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 17)</summary><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.
+[formula]
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+[formula]
+.
+.
+. · · ·
+[formula]
+[formula]
+Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.
+[formula]
+a11 0 · · · 0
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+a11
+[formula]
+· · · · · ·
+.
+.
+.
+[formula]
+[formula]
+Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.
+e) Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j:
+[formula]
+a11 0 · · · 0 0 a22 · · · 0 · · · · · ·</blockquote></details></div></div><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Ma trận tam giác trên là ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.</blockquote></details><div class="item"><span class="c">Ma trận tam giác dưới là ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.</blockquote></details></div><!--/b--></article><article class="ban" id="T02-D" data-ban="D"><h3>Bản D</h3><!--b--><div class="khoi"><b>Gợi lại tiên quyết</b><div class="tq"><b class="c">Ma trận tam giác trên</b> <small>Module 10: <span class="c">Ma trận vuông cấp n</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 17)</summary><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.
+[formula]
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+[formula]
+.
+.
+. · · ·
+[formula]
+[formula]
+Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.
+[formula]
+a11 0 · · · 0
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+a11
+[formula]
+· · · · · ·
+.
+.
+.
+[formula]
+[formula]
+Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.
+e) Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j:
+[formula]
+a11 0 · · · 0 0 a22 · · · 0 · · · · · ·</blockquote></details></div><div class="tq"><b class="c">Ma trận tam giác dưới</b> <small>Module 10: <span class="c">Ma trận vuông cấp n</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 17)</summary><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.
+[formula]
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+[formula]
+.
+.
+. · · ·
+[formula]
+[formula]
+Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.
+[formula]
+a11 0 · · · 0
+[formula]
+· · · · · ·
+.
+.
+. · · ·
+[formula]
+[formula]
+còn viết
+[formula]
+a11
+[formula]
+· · · · · ·
+.
+.
+.
+[formula]
+[formula]
+Ma trận tam giác trên hoặc ma trận tam giác dưới được gọi chung là ma trận tam giác.
+e) Ma trận chéo là ma trận vuông cấp n trong đó aij = 0 nếu i ̸= j:
+[formula]
+a11 0 · · · 0 0 a22 · · · 0 · · · · · ·</blockquote></details></div></div><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &gt; j được gọi là ma trận tam giác trên.</blockquote></details><div class="item"><span class="c">còn viết</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">còn viết</blockquote></details><div class="item"><span class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">Ma trận vuông A = [aij ]n mà aij = 0 nếu i &lt; j được gọi là ma trận tam giác dưới.</blockquote></details><div class="item"><span class="c">còn viết</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 17)</p><blockquote class="c">còn viết</blockquote></details></div><!--/b--></article></section><section class="card" id="T01"><div class="head"><span>Mục <b>T01</b></span><span>Cuốn: <b>doc-4</b></span><span>Module: <span class="c">Phân công lao động xã hội và chế độ tư hữu</span></span></div><h2 class="c">Tầng lớp trung gian</h2><div class="dinh-nghia"><p>Câu định nghĩa nguyên văn (trang 167):</p><blockquote class="c">Bộ phận này không có vị trí cơ bản trong phương thức sản xuất, nó thường xuyên bị phân hóa.</blockquote></div><article class="ban" id="T01-A" data-ban="A"><h3>Bản A</h3><!--b--><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Tầng lớp trung gian là bộ phận tồn tại bên cạnh giai cấp thống trị và giai cấp bị trị trong các xã hội có giai cấp.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Trong các xã hội có giai cấp, ngoài giai cấp thống trị và giai cấp bị trị, còn có các giai cấp và tầng lớp trung gian khác.</blockquote></details><div class="item"><span class="c">Đặc điểm của tầng lớp này là không giữ vị trí cơ bản trong phương thức sản xuất và luôn trong trạng thái phân hóa.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Bộ phận này không có vị trí cơ bản trong phương thức sản xuất, nó thường xuyên bị phân hóa.</blockquote></details></div><div class="khoi"><b>Ví dụ</b><div class="item"><span class="c">Sự phân hóa của các tầng lớp trung gian chịu sự chi phối trực tiếp từ lợi ích kinh tế, quyết định việc họ ngả về phía giai cấp thống trị hay giai cấp bị trị.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Nhân tố chi phối sự phân hóa của các tầng lớp trung gian là lợi ích. Các giai cấp và tầng lớp trung gian ngả về phía giai cấp thống trị hay bị trị là tùy thuộc vào vị trí lợi ích của họ .</blockquote></details></div><!--/b--></article><article class="ban" id="T01-B" data-ban="B"><h3>Bản B</h3><!--b--><div class="khoi"><b>Gợi lại tiên quyết</b><div class="tq"><b class="c">Giai cấp</b> <small>Module 70: <span class="c">Phân công lao động xã hội và chế độ tư hữu</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 167)</summary><blockquote class="c">Trong tác phẩm Sáng kiến vĩ đại, Lênin định nghĩa: &quot;Người ta gọi là giai cấp, những tập đoàn to lớn gồm những người khác nhau về địa vị của họ trong một hệ thống sản xuất xã hội nhất định trong lịch sử, khác nhau về quan hệ của họ (thường thường thì những quan hệ này được pháp luật quy định và thừa nhận) đối với những tư liệu sản xuất, v ề vai trò của họ trong tổ chức lao động xã hội, và như vậy là khác nhau về cách thức hưởng thụ và về phần của cải xã hội ít hoặc nhiều mà họ được hưởng.</blockquote></details><div class="item"><b>Câu nối:</b> <span class="c">Trong các xã hội có giai cấp, ngoài giai cấp thống trị và giai cấp bị trị, còn có các giai cấp và tầng lớp trung gian khác.</span></div><details class="nguon"><summary>Nguồn: [Q1]</summary><p><b>[Q1]</b> (trang 167)</p><blockquote class="c">Trong các xã hội có giai cấp, ngoài giai cấp thống trị và giai cấp bị trị, còn có các giai cấp và tầng lớp trung gian khác.</blockquote></details></div><div class="tq"><b class="c">Phương thức sản xuất</b> <small>Module 60: <span class="c">Tính khách quan của quy luật xã hội</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 152)</summary><blockquote class="c">Phương thức sản xuất là cách thức ức con người thực hiện quá trình sản xuất vật chất ở những giai đoạn lịch sử nhất định của xã hội loài người.</blockquote></details></div></div><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Tầng lớp trung gian là bộ phận không giữ vai trò nền tảng trong hệ thống sản xuất vật chất của xã hội.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Bộ phận này không có vị trí cơ bản trong phương thức sản xuất, nó thường xuyên bị phân hóa.</blockquote></details><div class="item"><span class="c">Sự phân hóa của tầng lớp trung gian chịu tác động trực tiếp từ lợi ích kinh tế trong quá trình vận động của xã hội.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Nhân tố chi phối sự phân hóa của các tầng lớp trung gian là lợi ích.</blockquote></details></div><div class="khoi"><b>Tiếp theo</b><div class="tq"><b class="c">Tầng lớp trí thức</b> <small>Module 71: <span class="c">Kết cấu xã hội - giai cấp</span></small></div><div class="tq"><b class="c">Giai cấp không cơ bản</b> <small>Module 71: <span class="c">Kết cấu xã hội - giai cấp</span></small><details><summary>Câu trích (trang 168)</summary><blockquote class="c">Ngoài hai giai cấp cơ bản, mỗi kết cấu xã hội - giai cấp còn bao gồm một số giai cấp không cơ bản và tầng lớp trung gian.</blockquote></details></div></div><!--/b--></article><article class="ban" id="T01-C" data-ban="C"><h3>Bản C</h3><!--b--><div class="khoi"><b>Gợi lại tiên quyết</b><div class="tq"><b class="c">Giai cấp</b> <small>Module 70: <span class="c">Phân công lao động xã hội và chế độ tư hữu</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 167)</summary><blockquote class="c">Trong tác phẩm Sáng kiến vĩ đại, Lênin định nghĩa: &quot;Người ta gọi là giai cấp, những tập đoàn to lớn gồm những người khác nhau về địa vị của họ trong một hệ thống sản xuất xã hội nhất định trong lịch sử, khác nhau về quan hệ của họ (thường thường thì những quan hệ này được pháp luật quy định và thừa nhận) đối với những tư liệu sản xuất, v ề vai trò của họ trong tổ chức lao động xã hội, và như vậy là khác nhau về cách thức hưởng thụ và về phần của cải xã hội ít hoặc nhiều mà họ được hưởng.</blockquote></details></div><div class="tq"><b class="c">Phương thức sản xuất</b> <small>Module 60: <span class="c">Tính khách quan của quy luật xã hội</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 152)</summary><blockquote class="c">Phương thức sản xuất là cách thức ức con người thực hiện quá trình sản xuất vật chất ở những giai đoạn lịch sử nhất định của xã hội loài người.</blockquote></details></div></div><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Tập đoàn người nào nắm tư liệu sản xuất sẽ trở thành giai cấp thống trị xã hội và tất yếu sẽ chiếm đoạt những sản phẩm lao động của các tập đoàn khác.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Tập đoàn người nào nắm tư liệu sản xuất sẽ trở thành giai cấp thống trị xã hội và tất yếu sẽ chiếm đoạt những sản phẩm lao động của các tập đoàn khác.</blockquote></details><div class="item"><span class="c">Đó là bản chất của những xung đột giai cấp trong các xã hội có giai cấp đối kháng.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Đó là bản chất của những xung đột giai cấp trong các xã hội có giai cấp đối kháng.</blockquote></details><div class="item"><span class="c">Trong các xã hội có giai cấp, ngoài giai cấp thống trị và giai cấp bị trị, còn có các giai cấp và tầng lớp trung gian khác.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Trong các xã hội có giai cấp, ngoài giai cấp thống trị và giai cấp bị trị, còn có các giai cấp và tầng lớp trung gian khác.</blockquote></details><div class="item"><span class="c">Các giai cấp và tầng lớp trung gian ngả về phía giai cấp thống trị hay bị trị là tùy thuộc vào vị trí lợi ích của họ .</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Các giai cấp và tầng lớp trung gian ngả về phía giai cấp thống trị hay bị trị là tùy thuộc vào vị trí lợi ích của họ .</blockquote></details></div><div class="khoi"><b>Tiếp theo</b><div class="tq"><b class="c">Tầng lớp trí thức</b> <small>Module 71: <span class="c">Kết cấu xã hội - giai cấp</span></small></div><div class="tq"><b class="c">Giai cấp không cơ bản</b> <small>Module 71: <span class="c">Kết cấu xã hội - giai cấp</span></small><details><summary>Câu trích (trang 168)</summary><blockquote class="c">Ngoài hai giai cấp cơ bản, mỗi kết cấu xã hội - giai cấp còn bao gồm một số giai cấp không cơ bản và tầng lớp trung gian.</blockquote></details></div></div><!--/b--></article><article class="ban" id="T01-D" data-ban="D"><h3>Bản D</h3><!--b--><div class="khoi"><b>Gợi lại tiên quyết</b><div class="tq"><b class="c">Giai cấp</b> <small>Module 70: <span class="c">Phân công lao động xã hội và chế độ tư hữu</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 167)</summary><blockquote class="c">Trong tác phẩm Sáng kiến vĩ đại, Lênin định nghĩa: &quot;Người ta gọi là giai cấp, những tập đoàn to lớn gồm những người khác nhau về địa vị của họ trong một hệ thống sản xuất xã hội nhất định trong lịch sử, khác nhau về quan hệ của họ (thường thường thì những quan hệ này được pháp luật quy định và thừa nhận) đối với những tư liệu sản xuất, v ề vai trò của họ trong tổ chức lao động xã hội, và như vậy là khác nhau về cách thức hưởng thụ và về phần của cải xã hội ít hoặc nhiều mà họ được hưởng.</blockquote></details><div class="item"><b>Câu nối:</b> <span class="c">Trong các xã hội có giai cấp, ngoài giai cấp thống trị và giai cấp bị trị, còn có các giai cấp và tầng lớp trung gian khác.</span></div><details class="nguon"><summary>Nguồn: [Q1]</summary><p><b>[Q1]</b> (trang 167)</p><blockquote class="c">Trong các xã hội có giai cấp, ngoài giai cấp thống trị và giai cấp bị trị, còn có các giai cấp và tầng lớp trung gian khác.</blockquote></details></div><div class="tq"><b class="c">Phương thức sản xuất</b> <small>Module 60: <span class="c">Tính khách quan của quy luật xã hội</span></small><details><summary>Câu định nghĩa của tiên quyết (trang 152)</summary><blockquote class="c">Phương thức sản xuất là cách thức ức con người thực hiện quá trình sản xuất vật chất ở những giai đoạn lịch sử nhất định của xã hội loài người.</blockquote></details></div></div><div class="khoi"><b>Giải thích</b><div class="item"><span class="c">Tầng lớp trung gian là bộ phận không giữ vị trí cơ bản trong phương thức sản xuất và thường xuyên chịu sự phân hóa.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Bộ phận này không có vị trí cơ bản trong phương thức sản xuất, nó thường xuyên bị phân hóa.</blockquote></details><div class="item"><span class="c">Sự phân hóa của các tầng lớp trung gian chịu sự chi phối trực tiếp từ lợi ích, dẫn đến việc họ có thể ngả về phía giai cấp thống trị hoặc giai cấp bị trị.</span></div><details class="nguon"><summary>Nguồn: [S1]</summary><p><b>[S1]</b> (trang 167)</p><blockquote class="c">Nhân tố chi phối sự phân hóa của các tầng lớp trung gian là lợi ích. Các giai cấp và tầng lớp trung gian ngả về phía giai cấp thống trị hay bị trị là tùy thuộc vào vị trí lợi ích của họ .</blockquote></details></div><div class="khoi"><b>Tiếp theo</b><div class="tq"><b class="c">Tầng lớp trí thức</b> <small>Module 71: <span class="c">Kết cấu xã hội - giai cấp</span></small></div><div class="tq"><b class="c">Giai cấp không cơ bản</b> <small>Module 71: <span class="c">Kết cấu xã hội - giai cấp</span></small><details><summary>Câu trích (trang 168)</summary><blockquote class="c">Ngoài hai giai cấp cơ bản, mỗi kết cấu xã hội - giai cấp còn bao gồm một số giai cấp không cơ bản và tầng lớp trung gian.</blockquote></details></div></div><!--/b--></article></section></body></html>
